@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneBook</title>
+</head>
+<body>
+    <h1>Phone Book📱</h1>
+    <div class="phonebook-container">
+        <div class="search-sec">
+            <input type="text" id="search" placeholder="Search Contact...">
+            <button type="button" onclick="search()">Search</button>
+        </div>
+        <p id="result"></p>
+    </div>
+    
+    <script>
+        const contacts = {
+            Vrushali: 9808766670,
+            Mohit: 7865409812,
+            Rohit: 8761234521,
+            Pallavi: 906742125,
+            Sakshi: 8654320988,
+            Anuja: 7656342563,
+            Mansi: 9832613429,
+        };
+
+        function search() {
+            const searchInput = document.getElementById("search").value.trim(); 
+            const result = document.getElementById("result");
+            
+            result.style.display = "none";
+
+            for (let name in contacts) {
+                if (name.toLowerCase() === searchInput.toLowerCase()) {
+                    result.innerHTML = `<strong>${name}</strong>&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;<strong>${contacts[name]}</strong>`;
+                    result.style.display = "block"; 
+                    return;
+                }
+            }
+
+            result.innerHTML = `Contact not found`;
+            result.style.display = "block"; 
+        }
+    </script>
+</body>
+</html>
